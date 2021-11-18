@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Rules
+{% endblock %}
+
+{% block main %}
+
+<form class="box" action="/rules" method="post">
+    <h1>Rules</h1>
+    <ol>
+        <li>Pick a random number from 1 - 100</li>
+        <li>Computer tries to guess your number in seven tries</li>
+        <li>If guess is less than the number click on "less"</li>
+        <li>If guess is greater than the number click on "greater"</li>
+        <li>If after seven tries computer cannot guess your number you win One million</li>
+    </ol>
+    <input type="submit" value="Play Game">
+</form>
+{% endblock %}

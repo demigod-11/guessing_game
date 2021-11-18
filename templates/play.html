@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Game
+{% endblock %}
+
+{% block main %}
+<form class="box" action="/play" method="post">
+    <h1>{{ name }}</h1>
+    {% if answer == True %}
+    <div class="game">
+        <p>Computer Guess <h1 id="guess"></h1></p>
+        <p>No of tries Left <span><p id="tries"></p></span></p>
+        <input type="submit" value="Less" id="less">
+        <input type="submit" name="req" value="Correct" id="large">
+        <input type="submit" value="Greater">
+    </div>
+    {% else %}
+        <input type="submit" name="req" value="Play Again">
+    {% endif %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+        var items = document.getElementsByClassName('game');
+        let less = document.getElementById("#less");
+        let large = document.getElementById("#large");
+        let high = 100;
+        let low = 0;
+        tries = 6;
+
+        while(tries){
+       
+            let mid = Math.floor((high + low) / 2)
+            document.querySelector("#guess").innerText = mid;
+            document.querySelector("#tries").innerText = tries;
+            if (less){
+                less.addEventListener('click', function(){
+                    low = mid;
+                    tries--
+                    document.querySelector("#guess").innerText = mid;
+                })
+            }
+            else if(large){
+                large.addEventListener('click', function(){
+                    high = mid;
+                    tries--
+                    document.querySelector("#guess").innerText = mid;
+                })
+            }
+
+            }
+        })
+
+    </script>
+</form>
+{% endblock %}
+
+
