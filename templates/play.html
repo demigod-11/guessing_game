@@ -7,10 +7,9 @@
 {% block main %}
 <form class="box" action="/play" method="post">
     <h1>{{ name }}</h1>
-    {% if answer == True %}
+    <p>Computer Guess <h1 id="guess"></h1></p>
+    <p>No of tries Left <span><p id="tries"></p></span></p>
     <div class="game">
-        <p>Computer Guess <h1 id="guess"></h1></p>
-        <p>No of tries Left <span><p id="tries"></p></span></p>
         <input type="submit" value="Less" id="less">
         <input type="submit" name="req" value="Correct" id="large">
         <input type="submit" value="Greater">
@@ -19,7 +18,6 @@
     <div class="replay" style="display: none">
         <input type="submit" name="req" value="Play Again">
     </div>
-    {% endif %}
     <script>
         if(sessionStorage.getItem("playAgain")){
                 document.querySelector(".game").style.display = "none";

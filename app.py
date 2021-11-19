@@ -51,10 +51,6 @@ def login():
     else:
         return render_template("login.html")
 
-@app.route("/win")
-def win():
-    ''' displays if guess is found'''
-    return render_template("win.html")
 
 @app.route("/rules", methods=["GET", "POST"])
 def rules():
@@ -73,9 +69,9 @@ def play():
         if request.form.get("req") == "Correct":
             answer = False
             
-            return render_template("win.html", answer=answer, name=name)
+            return render_template("win.html")
         elif request.form.get("req") == "Play Again":
             return redirect("/play")
     else:
-        return render_template("play.html", answer=answer, name=name)
+        return render_template("play.html", name=name)
 

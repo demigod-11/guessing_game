@@ -93,12 +93,9 @@ body{
 }
 .box input[type = "submit"]:hover{
   background: #2ecc71;
+  justify-content: space-between;
 }
 
 .game{
-  display: block;
-}
-
-#pl{
-  display: none;
+  display: flex;
 }
