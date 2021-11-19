@@ -16,13 +16,13 @@
         <input type="submit" value="Greater">
     </div>
     {% else %}
-        <input type="submit" name="req" value="Play Again">
+        <input type="submit" name="req" value="Play Again" id="pg">
     {% endif %}
     <script>
         
         function guessNumber(min=0, max=100, tries=1){
             var mid = Math.floor((min + max) / 2)
-            if(tries > 8){
+            if(tries > 7){
                 let req = document.querySelector("input[name=req]")
                 req.value = "Play Again"
                 req.click()
@@ -33,7 +33,7 @@
             }
 
             document.querySelector("#guess").innerText = mid;
-            document.querySelector("#tries").innerText = 8 - tries;
+            document.querySelector("#tries").innerText = 7 - tries;
             const btns = document.querySelectorAll(".game input")
             btns.forEach(btn => {
                 
@@ -45,7 +45,7 @@
                     max=0
                     mid=50
                     document.querySelector("#guess").innerText = mid;
-                    document.querySelector("#tries").innerText = 8 - tries;
+                    document.querySelector("#tries").innerText = 7 - tries;
                     return false
                 }
                 else if(e.target.value == "Less"){
