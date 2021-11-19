@@ -19,37 +19,50 @@
         <input type="submit" name="req" value="Play Again">
     {% endif %}
     <script>
-        document.addEventListener("DOMContentLoaded", function(){
-        var items = document.getElementsByClassName('game');
-        let less = document.getElementById("#less");
-        let large = document.getElementById("#large");
-        let high = 100;
-        let low = 0;
-        tries = 6;
+        
+        function guessNumber(min=0, max=100, tries=1){
+            var mid = Math.floor((min + max) / 2)
+            if(tries > 8){
+                let req = document.querySelector("input[name=req]")
+                req.value = "Play Again"
+                req.click()
+            }
+            else if (min < 0 || max > 100){
+                console.log("An error occurred")
+                return
+            }
 
-        while(tries){
-       
-            let mid = Math.floor((high + low) / 2)
             document.querySelector("#guess").innerText = mid;
-            document.querySelector("#tries").innerText = tries;
-            if (less){
-                less.addEventListener('click', function(){
-                    low = mid;
-                    tries--
+            document.querySelector("#tries").innerText = 8 - tries;
+            const btns = document.querySelectorAll(".game input")
+            btns.forEach(btn => {
+                
+                btn.addEventListener("click", (e) => {
+                    
+                if(e.target.name == "req"){
+                    tries = 1
+                    min=0
+                    max=0
+                    mid=50
                     document.querySelector("#guess").innerText = mid;
-                })
-            }
-            else if(large){
-                large.addEventListener('click', function(){
-                    high = mid;
-                    tries--
-                    document.querySelector("#guess").innerText = mid;
-                })
-            }
-
-            }
-        })
-
+                    document.querySelector("#tries").innerText = 8 - tries;
+                    return false
+                }
+                else if(e.target.value == "Less"){
+                    e.preventDefault()
+                    min = mid
+                }
+                else if(e.target.value == "Greater"){
+                    e.preventDefault()
+                    max = mid
+                }
+                tries += 1
+                return guessNumber(min, max, tries)
+            })
+            
+            })
+        }
+        guessNumber()
     </script>
 </form>
 {% endblock %}
