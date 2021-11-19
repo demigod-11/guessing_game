@@ -72,6 +72,7 @@ def play():
     if request.method == "POST":
         if request.form.get("req") == "Correct":
             answer = False
+            
             return render_template("win.html", answer=answer, name=name)
         elif request.form.get("req") == "Play Again":
             return redirect("/play")
