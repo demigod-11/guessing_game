@@ -5,7 +5,7 @@ body{
   background: #34495e;
 }
 .box{
-  width: 350px;
+  width: 400px;
   padding: 40px;
   position: absolute;
   top: 50%;
@@ -93,9 +93,10 @@ body{
 }
 .box input[type = "submit"]:hover{
   background: #2ecc71;
-  justify-content: space-between;
 }
 
 .game{
   display: flex;
+  justify-content: space-between;
+  
 }
